@@ -1,6 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/nav_graph">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/homePageFragment">
 
+    <fragment
+        android:id="@+id/homePageFragment"
+        android:name="com.araskaplan.countries.domain.view.fragment.HomePageFragment"
+        android:label="fragment_home_page"
+        tools:layout="@layout/fragment_home_page" >
+        <action
+            android:id="@+id/action_homePageFragment_to_savedPageFragment"
+            app:destination="@id/savedPageFragment" />
+        <action
+            android:id="@+id/action_homePageFragment_to_detailCardFragment"
+            app:destination="@id/detailCardFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailCardFragment"
+        android:name="com.araskaplan.countries.domain.view.fragment.DetailCardFragment"
+        android:label="fragment_detail_card"
+        tools:layout="@layout/fragment_detail_card" />
+    <fragment
+        android:id="@+id/savedPageFragment"
+        android:name="com.araskaplan.countries.domain.view.fragment.SavedPageFragment"
+        android:label="fragment_saved_page"
+        tools:layout="@layout/fragment_saved_page" >
+        <action
+            android:id="@+id/action_savedPageFragment_to_detailCardFragment"
+            app:destination="@id/detailCardFragment" />
+        <action
+            android:id="@+id/action_savedPageFragment_to_homePageFragment"
+            app:destination="@id/homePageFragment" />
+    </fragment>
 </navigation>
