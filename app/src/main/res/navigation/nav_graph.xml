@@ -21,7 +21,7 @@
         android:id="@+id/detailCardFragment"
         android:name="com.araskaplan.countries.domain.view.fragment.DetailCardFragment"
         android:label="fragment_detail_card"
-        tools:layout="@layout/fragment_detail_card" />
+        tools:layout="@layout/fragment_detail_page" />
     <fragment
         android:id="@+id/savedPageFragment"
         android:name="com.araskaplan.countries.domain.view.fragment.SavedPageFragment"

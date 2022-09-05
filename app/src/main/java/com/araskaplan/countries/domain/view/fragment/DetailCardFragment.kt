@@ -5,17 +5,17 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.araskaplan.countries.databinding.FragmentDetailCardBinding
+import com.araskaplan.countries.databinding.FragmentDetailPageBinding
 
 
 class DetailCardFragment : Fragment() {
-    private lateinit var binding: FragmentDetailCardBinding
+    private lateinit var binding: FragmentDetailPageBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentDetailCardBinding.inflate(inflater)
+        binding = FragmentDetailPageBinding.inflate(inflater)
         return binding.root
     }
 
