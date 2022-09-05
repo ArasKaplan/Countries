@@ -19,9 +19,13 @@
     </fragment>
     <fragment
         android:id="@+id/detailCardFragment"
-        android:name="com.araskaplan.countries.domain.view.fragment.DetailCardFragment"
+        android:name="com.araskaplan.countries.domain.view.fragment.DetailPageFragment"
         android:label="fragment_detail_card"
-        tools:layout="@layout/fragment_detail_page" />
+        tools:layout="@layout/fragment_detail_page" >
+        <argument
+            android:name="code"
+            app:argType="string" />
+    </fragment>
     <fragment
         android:id="@+id/savedPageFragment"
         android:name="com.araskaplan.countries.domain.view.fragment.SavedPageFragment"

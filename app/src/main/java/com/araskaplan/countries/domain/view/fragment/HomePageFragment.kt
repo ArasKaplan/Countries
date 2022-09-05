@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.araskaplan.countries.databinding.FragmentHomePageBinding
 import com.araskaplan.countries.domain.view.adapter.CountryAdapter
@@ -23,7 +24,7 @@ class HomePageFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding= FragmentHomePageBinding.inflate(inflater)
+        binding = FragmentHomePageBinding.inflate(inflater)
         initializeViews()
         viewModel.fetchCountries()
         observe()
@@ -31,15 +32,23 @@ class HomePageFragment : Fragment() {
     }
 
 
-    fun initializeViews(){
-        binding.recvHomepage.layoutManager = LinearLayoutManager(context,LinearLayoutManager.VERTICAL,false)
-        adapter = CountryAdapter{ position -> Toast.makeText(context,"$position",Toast.LENGTH_LONG).show() }
+    fun initializeViews() {
+        binding.recvHomepage.layoutManager =
+            LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+        adapter = CountryAdapter { position -> recvOnclick(position) }
         binding.recvHomepage.adapter = adapter
     }
 
-    private fun observe(){
-        viewModel.countryList.observe(viewLifecycleOwner){
+    private fun observe() {
+        viewModel.countryList.observe(viewLifecycleOwner) {
             adapter.submitList(it)
         }
+    }
+
+    private fun recvOnclick(position: Int) {
+        val toDetailsFragment =
+            HomePageFragmentDirections
+                .actionHomePageFragmentToDetailCardFragment(adapter.currentList[position].countryCode)
+        findNavController().navigate(toDetailsFragment)
     }
 }

@@ -15,4 +15,8 @@ class CountryRemoteDataSource @Inject constructor(
     suspend fun fetchCountries() = withContext(ioDispatcher){
         geoDbApi.fetchCountries(Common.API_KEY,Common.API_HOST)
     }
+
+    suspend fun fetchCountry(countryCode:String) = withContext(ioDispatcher){
+        geoDbApi.fetchCountry(Common.API_KEY,Common.API_HOST,countryCode)
+    }
 }

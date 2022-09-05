@@ -17,18 +17,12 @@ import javax.inject.Inject
 class HomePageViewModel @Inject constructor(
     private val fetchCountriesUseCase: fetchCountriesUseCase
 ) : ViewModel() {
+
     val countryList = MutableLiveData<List<CountryHomePageUiModel>>(arrayListOf())
-
-
-
-
-
 
     fun fetchCountries(){
         viewModelScope.launch {
             countryList.value = fetchCountriesUseCase.fetchCountries()
         }
     }
-
-
 }

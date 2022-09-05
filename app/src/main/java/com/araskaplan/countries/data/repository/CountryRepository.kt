@@ -10,4 +10,6 @@ class CountryRepository @Inject constructor(
 ) {
 
     suspend fun fetchCountries() = countryRemoteDataSource.fetchCountries()
+
+    suspend fun fetchCountry(countryCode:String) = countryRemoteDataSource.fetchCountry(countryCode)
 }
