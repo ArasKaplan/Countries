@@ -43,11 +43,19 @@ object RetrofitModule {
     @Singleton
     fun provideGeoDbApi(): GeoDbApi {
         val logger = HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
+        val headerInterceptor = Interceptor.invoke { chain->
+            chain.request().newBuilder()
+                .addHeader("X-RapidApi-Key",Common.API_KEY)
+                .addHeader("X-RapidAPI-Host",Common.API_HOST)
+                .build()
+                .let(chain::proceed)
+        }
         val okHttpClient = OkHttpClient.Builder()
             .connectTimeout(10, TimeUnit.SECONDS)
             .writeTimeout(10, TimeUnit.SECONDS)
             .readTimeout(30, TimeUnit.SECONDS)
             .addInterceptor(logger)
+            .addInterceptor(headerInterceptor)
 
         return Retrofit.Builder()
             .baseUrl(Common.GEODB_BASEURL)
