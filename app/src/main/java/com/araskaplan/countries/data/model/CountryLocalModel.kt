@@ -7,7 +7,7 @@ import androidx.room.PrimaryKey
 data class CountryLocalModel(
     @PrimaryKey val code: String,
     val callingCode: String,
-    val flagImage: String,
+    val flagImageUrl: String,
     val name: String,
     val numRegions: String,
     val wikiDataId: String

@@ -35,7 +35,7 @@ class HomePageFragment : Fragment() {
     fun initializeViews() {
         binding.recvHomepage.layoutManager =
             LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
-        adapter = CountryAdapter { position -> recvOnclick(position) }
+        adapter = CountryAdapter(this::recvOnclick,this::starOnClick)
         binding.recvHomepage.adapter = adapter
     }
 
@@ -50,5 +50,8 @@ class HomePageFragment : Fragment() {
             HomePageFragmentDirections
                 .actionHomePageFragmentToDetailCardFragment(adapter.currentList[position].countryCode)
         findNavController().navigate(toDetailsFragment)
+    }
+    private fun starOnClick(position: Int){
+        viewModel.insertCountry(adapter.currentList[position].countryCode)
     }
 }

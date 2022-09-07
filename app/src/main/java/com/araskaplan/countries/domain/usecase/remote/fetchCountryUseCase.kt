@@ -3,6 +3,7 @@ package com.araskaplan.countries.domain.usecase.remote
 import com.araskaplan.countries.data.repository.CountryRepository
 import com.araskaplan.countries.di.DefaultDispatcher
 import com.araskaplan.countries.domain.model.CountryDTO.toCountryDetailsUiModel
+import com.araskaplan.countries.domain.model.CountryDTO.toCountryLocalModel
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.withContext
 import javax.inject.Inject

@@ -4,6 +4,7 @@ import android.text.Layout
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
@@ -11,13 +12,17 @@ import androidx.recyclerview.widget.RecyclerView
 import com.araskaplan.countries.R
 import com.araskaplan.countries.domain.model.CountryHomePageUiModel
 
-class CountryAdapter(val onClick: (position: Int) -> Unit) :
+class CountryAdapter(
+    val itemViewOnClick: (position: Int) -> Unit,
+    val starOnClick: (position: Int) -> Unit
+) :
     ListAdapter<CountryHomePageUiModel, CountryAdapter.CountryUiModelViewHolder>(
         CountryAdapterDiffCallback()
     ) {
 
     class CountryUiModelViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         private val countryName: TextView = view.findViewById(R.id.textview_countrycard_countryname)
+        val star = view.findViewById<ImageView>(R.id.imageview_recvcard_star)
 
         fun bindData(countryUiModel: CountryHomePageUiModel) {
             countryName.text = countryUiModel.country
@@ -32,9 +37,13 @@ class CountryAdapter(val onClick: (position: Int) -> Unit) :
 
     override fun onBindViewHolder(holder: CountryUiModelViewHolder, position: Int) {
         holder.bindData(getItem(position))
-        holder.itemView.setOnClickListener{
-            onClick(position)
+        holder.itemView.setOnClickListener {
+            itemViewOnClick(position)
         }
+        holder.star.setOnClickListener {
+            starOnClick(position)
+        }
+
     }
 }
 

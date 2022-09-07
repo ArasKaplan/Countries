@@ -12,11 +12,20 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="16dp"
         android:background="@drawable/shape_rounded_corner_black_stroke"
-        android:drawableRight="@drawable/ic_baseline_star_24"
         android:gravity="start|center_vertical"
         android:paddingStart="16dp"
         android:paddingEnd="16dp"
         android:text="Country Name"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageview_recvcard_star"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/textview_countrycard_countryname"
+        app:layout_constraintTop_toTopOf="@+id/textview_countrycard_countryname"
+        app:srcCompat="@drawable/ic_baseline_star_24" />
 </androidx.constraintlayout.widget.ConstraintLayout>
